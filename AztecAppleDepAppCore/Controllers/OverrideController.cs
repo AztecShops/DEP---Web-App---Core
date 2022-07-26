@@ -31,7 +31,7 @@ namespace AztecAppleDepApp.Controllers
         //=============================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult Search([Bind(Prefix = "TransactionNumber")]string OrderNumber)
+        public ActionResult Search([Bind(Prefix = "TransactionNumber")]string OrderNumber)
         {
             OrderEf Order;
             string TransNo = string.Empty;
@@ -62,7 +62,7 @@ namespace AztecAppleDepApp.Controllers
         //=============================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult Process(TransactionLookupViewModel Transaction)
+        public ActionResult Process(TransactionLookupViewModel Transaction)
         {
             string OrderNumber = Transaction.TransactionNo.Trim();
             int ChangeCounter = 0;

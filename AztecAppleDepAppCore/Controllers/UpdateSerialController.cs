@@ -16,10 +16,10 @@ using AztecAppleDepApp.Helpers;
 
 namespace AztecAppleDepApp.Controllers
 {
-    public class UpdateSerialController : Microsoft.AspNetCore.Mvc.Controller
+    public class UpdateSerialController : Controller
     {
         // GET: UpdateSerial
-        public Microsoft.AspNetCore.Mvc.ActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
@@ -32,7 +32,7 @@ namespace AztecAppleDepApp.Controllers
         //=============================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult Search([Bind(Prefix = "TransactionNumber")]string OrderNumber)
+        public ActionResult Search([Bind(Prefix = "TransactionNumber")]string OrderNumber)
         {
             OrderEf Order;
             using (_dbContext _Db = new _dbContext())
@@ -60,7 +60,7 @@ namespace AztecAppleDepApp.Controllers
         //=============================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult Process(TransactionLookupViewModel Transaction)
+        public ActionResult Process(TransactionLookupViewModel Transaction)
         {
             string OrderNumber = Transaction.TransactionNo.Trim();
             int ChangeCounter = 0;

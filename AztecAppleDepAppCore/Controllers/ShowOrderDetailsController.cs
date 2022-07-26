@@ -13,17 +13,17 @@ using AztecAppleDepApp.Helpers;
 namespace AztecAppleDepApp.Controllers
 {
     [Route("ShowOrderDetails")]
-    public class ShowOrderDetailsController : Microsoft.AspNetCore.Mvc.Controller
+    public class ShowOrderDetailsController : Controller
     {
         [Route("Index")]
-        public Microsoft.AspNetCore.Mvc.ActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult SearchOrder([Bind(Prefix = "TransactionNumber")]string OrderNumber)
+        public ActionResult SearchOrder([Bind(Prefix = "TransactionNumber")]string OrderNumber)
         {
             var result = new List<SearchResultViewModel>();
             var request = new SodRequest();

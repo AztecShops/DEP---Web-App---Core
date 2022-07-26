@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AztecAppleDepApp.Controllers
 {
-    public class SearchController : Microsoft.AspNetCore.Mvc.Controller
+    public class SearchController : Controller
     {
-        public Microsoft.AspNetCore.Mvc.ActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult SearchSerial(string Id)
+        public ActionResult SearchSerial(string Id)
         {
             var result = new List<SearchResultViewModel>();
 
@@ -40,7 +40,7 @@ namespace AztecAppleDepApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public Microsoft.AspNetCore.Mvc.ActionResult SearchOrder(string Id)
+        public ActionResult SearchOrder(string Id)
         {
             var result = new List<SearchResultViewModel>();
 
@@ -63,7 +63,7 @@ namespace AztecAppleDepApp.Controllers
         }
 
         [HttpGet]
-        public Microsoft.AspNetCore.Mvc.ActionResult Details(string Id)
+        public ActionResult Details(string Id)
         {
             var result = new DepTransactionDetailViewModel();
             var recId = Convert.ToInt32(Id);
