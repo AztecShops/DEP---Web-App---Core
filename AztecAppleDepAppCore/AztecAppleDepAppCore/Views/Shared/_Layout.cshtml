@@ -1,0 +1,125 @@
+﻿@using AztecAppleDepApp.Helpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<title>DEP - @ViewBag.Title</title>*@
+    <title>DEP - @ViewData["Title"]</title>
+    <link rel="icon" type="image/ico" href="~/images/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    @*Loading and bundling css/js according to development enviornment*@
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/Site.css" />
+        <link rel="stylesheet" href="~/css/dashboard.css" />
+    </environment>
+ 
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
+    </environment>
+	
+    <environment include="Development">
+        
+        <script src="~/js/modernizr-2.8.3.js"></script>
+        <script src="~/js/jquery-3.3.1.js"></script>
+        <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/jquery.validate.js"></script>
+        <script src="~/js/popper.js"></script>
+        <script src="~/js/popper-utils.js"></script>
+        <script src="~/js/custom.js"></script>
+        <script src="~/js/dashboard.js"></script>
+    </environment>
+ 
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/js/bundles.min.js" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-light fixed-top bg-light flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="~/">
+            <img src="~/images/logo.png" alt="San Diego State University - Aztec Shops" title="San Diego State University - Aztec Shops" class="img-fluid" />
+        </a>
+        <div class="w-100 ml-4">
+            <h1>Apple Device Enrollment</h1>
+        </div>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a href="#" title="Help" data-toggle="modal" data-target="#HelpModal">
+                    <span data-feather="help-circle"></span>
+                </a>
+                <strong>Welcome, @User.Identity.Name</strong>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" id="home" href="@Url.Action("Index","Home")">
+                                <i class="fas fa-home"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="bulkEnrollDevice" href="@Url.Action("Index","BulkEnrollDevice")">
+                                <i class="fas fa-upload"></i>
+                                Bulk Enroll Device
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="checkTransactionStatus" href="@Url.Action("Index","CheckTransactionStatus")">
+                                <i class="fas fa-check-square"></i>
+                                Check Transaction Status
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="showOrderDetails" href="@Url.Action("Index","ShowOrderDetails")">
+                                <i class="fas fa-file-alt"></i>
+                                Show Order Details
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link @Html.IsSelected(actions:"Index", controllers:"UpdateSerial")" href="@Url.Action("Index","UpdateSerial")">
+                                    <i class="fas fa-edit"></i>
+                                    Update Serial Numbers
+                                </a>
+                            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" id="override" href="@Url.Action("Index","Override")">
+                                <i class="fas fa-save"></i>
+                                Override Serial Numbers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="HelpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Help</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>If you encounter a problem or need help, please submit an IssueTrak to the IT Department.</p>
+                    <hr />
+                    <h5 class="modal-title">Refunds</h5>
+                    <p>For refunds, please submit an IssueTrak to the IT Department. Select the quick-pick selection and fill out the following information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

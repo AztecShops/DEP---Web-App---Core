@@ -1,0 +1,318 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "deviceEnrollmentTransactionID",
+    "statusCode",
+    "completedOn",
+    "respondedOn",
+    "orders",
+    "transactionId",
+    "checkTransactionErrorResponse",
+    "errorMessage",
+    "errorCode"
+  ],
+  "properties": {
+    "deviceEnrollmentTransactionID": {
+      "$id": "#/properties/deviceEnrollmentTransactionID",
+      "type": "string",
+      "title": "The Deviceenrollmenttransactionid Schema",
+      "default": "",
+      "examples": [
+        "02364f6f-d870-45f5-a227-cc41132f183b_1536855834166"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "statusCode": {
+      "$id": "#/properties/statusCode",
+      "type": "string",
+      "title": "The Statuscode Schema",
+      "default": "",
+      "examples": [
+        "COMPLETE"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completedOn": {
+      "$id": "#/properties/completedOn",
+      "type": "string",
+      "title": "The Completedon Schema",
+      "default": "",
+      "examples": [
+        "2018-09-13T16:23:57Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "respondedOn": {
+      "$id": "#/properties/respondedOn",
+      "type": "string",
+      "title": "The Respondedon Schema",
+      "default": "",
+      "examples": [
+        "0001-01-01T00:00:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "orders": {
+      "$id": "#/properties/orders",
+      "type": "array",
+      "title": "The Orders Schema",
+      "items": {
+        "$id": "#/properties/orders/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "orderNumber",
+          "orderDate",
+          "orderType",
+          "customerId",
+          "poNumber",
+          "deliveries",
+          "orderPostStatus",
+          "orderPostStatusMessage",
+          "showOrderStatusCode",
+          "showOrderStatusMessage"
+        ],
+        "properties": {
+          "orderNumber": {
+            "$id": "#/properties/orders/items/properties/orderNumber",
+            "type": "string",
+            "title": "The Ordernumber Schema",
+            "default": "",
+            "examples": [
+              "558"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderDate": {
+            "$id": "#/properties/orders/items/properties/orderDate",
+            "type": "string",
+            "title": "The Orderdate Schema",
+            "default": "",
+            "examples": [
+              "0001-01-01T00:00:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderType": {
+            "$id": "#/properties/orders/items/properties/orderType",
+            "type": "null",
+            "title": "The Ordertype Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "customerId": {
+            "$id": "#/properties/orders/items/properties/customerId",
+            "type": "null",
+            "title": "The Customerid Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "poNumber": {
+            "$id": "#/properties/orders/items/properties/poNumber",
+            "type": "null",
+            "title": "The Ponumber Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "deliveries": {
+            "$id": "#/properties/orders/items/properties/deliveries",
+            "type": "array",
+            "title": "The Deliveries Schema",
+            "items": {
+              "$id": "#/properties/orders/items/properties/deliveries/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": [
+                "deliveryNumber",
+                "shipDate",
+                "devices",
+                "deliveryPostStatus",
+                "deliveryPostStatusMessage"
+              ],
+              "properties": {
+                "deliveryNumber": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/deliveryNumber",
+                  "type": "string",
+                  "title": "The Deliverynumber Schema",
+                  "default": "",
+                  "examples": [
+                    "558"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "shipDate": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/shipDate",
+                  "type": "string",
+                  "title": "The Shipdate Schema",
+                  "default": "",
+                  "examples": [
+                    "0001-01-01T00:00:00"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "devices": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices",
+                  "type": "array",
+                  "title": "The Devices Schema",
+                  "items": {
+                    "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items",
+                    "type": "object",
+                    "title": "The Items Schema",
+                    "required": [
+                      "deviceId",
+                      "assetTag",
+                      "devicePostStatus",
+                      "devicePostStatusMessage"
+                    ],
+                    "properties": {
+                      "deviceId": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/deviceId",
+                        "type": "string",
+                        "title": "The Deviceid Schema",
+                        "default": "",
+                        "examples": [
+                          "C05SL3ABGMLM"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "assetTag": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/assetTag",
+                        "type": "null",
+                        "title": "The Assettag Schema",
+                        "default": null,
+                        "examples": [
+                          null
+                        ]
+                      },
+                      "devicePostStatus": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/devicePostStatus",
+                        "type": "string",
+                        "title": "The Devicepoststatus Schema",
+                        "default": "",
+                        "examples": [
+                          "COMPLETE"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "devicePostStatusMessage": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/devicePostStatusMessage",
+                        "type": "null",
+                        "title": "The Devicepoststatusmessage Schema",
+                        "default": null,
+                        "examples": [
+                          null
+                        ]
+                      }
+                    }
+                  }
+                },
+                "deliveryPostStatus": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/deliveryPostStatus",
+                  "type": "string",
+                  "title": "The Deliverypoststatus Schema",
+                  "default": "",
+                  "examples": [
+                    "COMPLETE"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "deliveryPostStatusMessage": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/deliveryPostStatusMessage",
+                  "type": "null",
+                  "title": "The Deliverypoststatusmessage Schema",
+                  "default": null,
+                  "examples": [
+                    null
+                  ]
+                }
+              }
+            }
+          },
+          "orderPostStatus": {
+            "$id": "#/properties/orders/items/properties/orderPostStatus",
+            "type": "string",
+            "title": "The Orderpoststatus Schema",
+            "default": "",
+            "examples": [
+              "COMPLETE"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatusMessage": {
+            "$id": "#/properties/orders/items/properties/orderPostStatusMessage",
+            "type": "null",
+            "title": "The Orderpoststatusmessage Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "showOrderStatusCode": {
+            "$id": "#/properties/orders/items/properties/showOrderStatusCode",
+            "type": "null",
+            "title": "The Showorderstatuscode Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "showOrderStatusMessage": {
+            "$id": "#/properties/orders/items/properties/showOrderStatusMessage",
+            "type": "null",
+            "title": "The Showorderstatusmessage Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          }
+        }
+      }
+    },
+    "transactionId": {
+      "$id": "#/properties/transactionId",
+      "type": "null",
+      "title": "The Transactionid Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "checkTransactionErrorResponse": {
+      "$id": "#/properties/checkTransactionErrorResponse",
+      "type": "null",
+      "title": "The Checktransactionerrorresponse Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "errorMessage": {
+      "$id": "#/properties/errorMessage",
+      "type": "null",
+      "title": "The Errormessage Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "errorCode": {
+      "$id": "#/properties/errorCode",
+      "type": "null",
+      "title": "The Errorcode Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    }
+  }
+}

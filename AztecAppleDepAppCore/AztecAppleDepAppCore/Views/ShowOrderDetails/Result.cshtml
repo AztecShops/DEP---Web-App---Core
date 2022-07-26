@@ -1,0 +1,202 @@
+﻿@model AztecAppleDepApp.Models.ShowOrderDetailsResponse
+
+@{
+    ViewBag.Title = "Show Order Details Result";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Results</h2>
+</div>
+
+@if (Model.orders == null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                <strong>Error - No Transaction found.</strong>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <strong>Here's what we found:</strong>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (var header in Model.orders)
+                {
+                    <th>@Html.DisplayNameFor(a => header.orderDate)</th>
+                    <th>@Html.DisplayNameFor(a => header.orderNumber)</th>
+                    <th>@Html.DisplayNameFor(a => header.poNumber)</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var item in Model.orders)
+                {
+                    <td>@Html.DisplayFor(b => item.orderDate)</td>
+                    <td>@Html.DisplayFor(b => item.orderNumber)</td>
+                    <td>@Html.DisplayFor(b => item.poNumber)</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-secondary" role="alert">
+                <strong>Apple Response:</strong>
+            </div>
+        </div>
+    </div>
+
+    foreach (var order in Model.orders)
+    {
+        if (order.showOrderStatusCode != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>There's an error with your order.</strong>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(x => order.showOrderStatusCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => order.showOrderStatusMessage)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => order.showOrderStatusCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => order.showOrderStatusMessage)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    }
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.respondedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.statusCode)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.respondedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.statusCode)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Devices / Serial Numbers
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.orders)
+            {
+                if (order.deliveries != null)
+                {
+                    foreach (var delivery in order.deliveries)
+                    {
+                        if (delivery.devices != null)
+                        {
+                            foreach (var device in delivery.devices)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(x => device.deviceId)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@*<div>
+        <dl class="dl-horizontal">
+            <dt>
+                Details:
+            </dt>
+
+            <dd>
+                <br />
+                @foreach (var order in Model.orders)
+                {
+                    @: Order#
+                    @Html.DisplayFor(x => order.orderNumber)
+                    <br />
+                    @: Order Post Status:
+                    @Html.DisplayFor(x => order.orderPostStatus)
+                    @Html.DisplayFor(x => order.orderPostStatusMessage)
+                    <br />
+                    @: Show Order Status:
+                    @Html.DisplayFor(x => order.showOrderStatusCode)
+                    @Html.DisplayFor(x => order.showOrderStatusMessage)
+                    <br />
+                    if (order.deliveries != null)
+                    {
+                        foreach (var delivery in order.deliveries)
+                        {
+                            @Html.DisplayFor(x => delivery.deliveryPostStatus)
+                            @Html.DisplayFor(x => delivery.deliveryPostStatusMessage)
+                            <br />
+                            if (delivery.devices != null)
+                            {
+                                foreach (var device in delivery.devices)
+                                {
+                                    @Html.DisplayFor(x => device.deviceId)
+                                    @: -
+                                    @Html.DisplayFor(x => device.devicePostStatus)
+                                    @: -
+                                    @Html.DisplayFor(x => device.devicePostStatusMessage)
+                                    <br />
+                                }
+                            }
+                        }
+                    }
+                }
+
+            </dd>
+
+
+        </dl>
+    </div>*@

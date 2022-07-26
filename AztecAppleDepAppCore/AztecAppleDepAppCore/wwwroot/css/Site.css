@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+/*=========================*/
+/* Links */
+/*=========================*/
+
+/* unvisited link */
+a:link {
+    color: #c30000;
+}
+
+/* visited link */
+a:visited {
+    color: #c30000;
+}
+
+/* mouse over link */
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    color: #c30000;
+}
+
+.active a {
+    color: #c30000;
+}
+
+/*=========================*/
+/* Custom Button */
+/*=========================*/
+.btn-aztecs {
+    color: #fff !important;
+    background-color: #333;
+}
+    .btn-aztecs:focus,
+    .btn-aztecs.focus {
+        color: #fff;
+        background-color: #c30000;
+    }
+    .btn-aztecs:hover {
+        color: #fff;
+        background-color: #c30000;
+    }
+
+/*=========================*/
+/* Misc. */
+/*=========================*/
+.bg-button-padding {
+    padding: 25px 0;
+}
+
+/*=========================*/
+/* Override */
+/*=========================*/
+.bg-info {
+    background-color: #005281 !important;
+}

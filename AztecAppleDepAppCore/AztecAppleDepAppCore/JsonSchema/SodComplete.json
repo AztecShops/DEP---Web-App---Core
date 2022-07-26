@@ -1,0 +1,177 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "orders",
+    "statusCode",
+    "respondedOn"
+  ],
+  "properties": {
+    "orders": {
+      "$id": "#/properties/orders",
+      "type": "array",
+      "title": "The Orders Schema",
+      "items": {
+        "$id": "#/properties/orders/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "orderNumber",
+          "orderDate",
+          "orderType",
+          "customerId",
+          "poNumber",
+          "deliveries"
+        ],
+        "properties": {
+          "orderNumber": {
+            "$id": "#/properties/orders/items/properties/orderNumber",
+            "type": "string",
+            "title": "The Ordernumber Schema",
+            "default": "",
+            "examples": [
+              "559"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderDate": {
+            "$id": "#/properties/orders/items/properties/orderDate",
+            "type": "string",
+            "title": "The Orderdate Schema",
+            "default": "",
+            "examples": [
+              "2018-08-16T05:07:28Z"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderType": {
+            "$id": "#/properties/orders/items/properties/orderType",
+            "type": "string",
+            "title": "The Ordertype Schema",
+            "default": "",
+            "examples": [
+              "OR"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "customerId": {
+            "$id": "#/properties/orders/items/properties/customerId",
+            "type": "string",
+            "title": "The Customerid Schema",
+            "default": "",
+            "examples": [
+              "10000"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "poNumber": {
+            "$id": "#/properties/orders/items/properties/poNumber",
+            "type": "string",
+            "title": "The Ponumber Schema",
+            "default": "",
+            "examples": [
+              "559"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "deliveries": {
+            "$id": "#/properties/orders/items/properties/deliveries",
+            "type": "array",
+            "title": "The Deliveries Schema",
+            "items": {
+              "$id": "#/properties/orders/items/properties/deliveries/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": [
+                "deliveryNumber",
+                "shipDate",
+                "devices"
+              ],
+              "properties": {
+                "deliveryNumber": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/deliveryNumber",
+                  "type": "string",
+                  "title": "The Deliverynumber Schema",
+                  "default": "",
+                  "examples": [
+                    "559"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "shipDate": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/shipDate",
+                  "type": "string",
+                  "title": "The Shipdate Schema",
+                  "default": "",
+                  "examples": [
+                    "2018-08-16T05:07:28Z"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "devices": {
+                  "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices",
+                  "type": "array",
+                  "title": "The Devices Schema",
+                  "items": {
+                    "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items",
+                    "type": "object",
+                    "title": "The Items Schema",
+                    "required": [
+                      "deviceId",
+                      "assetTag"
+                    ],
+                    "properties": {
+                      "deviceId": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/deviceId",
+                        "type": "string",
+                        "title": "The Deviceid Schema",
+                        "default": "",
+                        "examples": [
+                          "C05SL3AAGMLM"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "assetTag": {
+                        "$id": "#/properties/orders/items/properties/deliveries/items/properties/devices/items/properties/assetTag",
+                        "type": "string",
+                        "title": "The Assettag Schema",
+                        "default": "",
+                        "examples": [
+                          "C05SL3AAGMLM"
+                        ],
+                        "pattern": "^(.*)$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": {
+      "$id": "#/properties/statusCode",
+      "type": "string",
+      "title": "The Statuscode Schema",
+      "default": "",
+      "examples": [
+        "COMPLETE"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "respondedOn": {
+      "$id": "#/properties/respondedOn",
+      "type": "string",
+      "title": "The Respondedon Schema",
+      "default": "",
+      "examples": [
+        "2018-09-13T17:26:47Z"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

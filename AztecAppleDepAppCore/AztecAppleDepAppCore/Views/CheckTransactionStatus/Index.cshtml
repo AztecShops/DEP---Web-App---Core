@@ -1,0 +1,50 @@
+﻿@model AztecAppleDepApp.Models.TransactionSearchViewModel
+@{
+    ViewBag.Title = "Check Transaction Status";
+}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2>Check Transaction Status</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-primary" role="alert">
+                <strong>Enter/Scan POS Transaction #:</strong>
+            </div>
+        </div>
+    </div>
+@*    @using (Ajax.BeginForm("Search", "CheckTransactionStatus", new AjaxOptions { LoadingElementId = "ajax-loader", UpdateTargetId = "Results", InsertionMode = InsertionMode.Replace, }, new { id = "form" }))*@
+    <form id="form" asp-action="Search" asp-controller="CheckTransactionStatus" data-ajax-loading="ajax-loader" data-ajax-update="Results" data-ajax-mode="replace"></form>
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <strong>@Html.LabelFor(model => model.TransactionNumber, "Transaction Number", new { @class = "control-label" })</strong>
+                @Html.TextBoxFor(model => model.TransactionNumber, null, new { @class = "form-control", placeholder = "Transaction Number" })
+                <p>@Html.ValidationMessageFor(model => model.TransactionNumber, "", new { @class = "text-danger" })</p>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-aztecs" id="SubmitBtn" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img id="ajax-loader" src="~/images/ajax-loader.gif" style="display:none;" />
+        </div>
+    </div>
+
+    <div id="Results"></div>
+
+
+</main>
+
+<script type="text/javascript">
+    // Highlighting links in dashboard
+
+    $('document').ready(function () {
+        $('#checkTransactionStatus').addClass('active');
+    });
+</script>

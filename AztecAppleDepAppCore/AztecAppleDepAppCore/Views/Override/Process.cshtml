@@ -1,0 +1,38 @@
+﻿@model AztecAppleDepApp.Models.BedResponse
+
+@{
+    ViewBag.Title = "Process";
+}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2>Process</h2>
+    </div>
+    @if (ViewBag.Error == true)
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Error</strong> - Please go back and try again. If problem persist, please contact the web administrator.
+        </div>
+    }
+    else
+    {
+        if (Model.enrollDeviceErrorResponse != null)
+        {
+            @Html.DisplayFor(x => x.enrollDeviceErrorResponse.errorCode)<br />
+            @Html.DisplayFor(x => x.enrollDeviceErrorResponse.errorMessage)
+        }
+        if (Model.enrollDevicesResponse != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert">
+                        <strong>Thank you for submitting your devices to DEP Process.</strong>
+                    </div>
+                </div>
+            </div>
+            <strong>@Html.DisplayFor(x => x.enrollDevicesResponse.statusCode)</strong><br />
+            @Html.DisplayFor(x => x.deviceEnrollmentTransactionId)<br />
+            @Html.DisplayFor(x => x.enrollDevicesResponse.statusMessage)
+        }
+    }
+</main>

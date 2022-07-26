@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AztecAppleDepApp.Models.BedTransactionSearchViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stamp)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ObjNum)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepTransactionId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsRecordProcessed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeviceEnrollmentTransactionId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Note)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Stamp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ObjNum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepTransactionId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsRecordProcessed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeviceEnrollmentTransactionId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Note)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Select", "SearchSelect", "BulkEnrollDevice", new { TransactionId = item.DepTransactionId, TransactionLocation = item.TransactionLocation }, null) |
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</main>

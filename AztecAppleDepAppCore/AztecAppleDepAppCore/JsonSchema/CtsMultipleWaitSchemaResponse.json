@@ -1,0 +1,59 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "deviceEnrollmentTransactionID",
+    "checkTransactionErrorResponse"
+  ],
+  "properties": {
+    "deviceEnrollmentTransactionID": {
+      "$id": "#/properties/deviceEnrollmentTransactionID",
+      "type": "string",
+      "title": "The Deviceenrollmenttransactionid Schema",
+      "default": "",
+      "examples": [
+        "75d83a3c-a56c-464c-8624-7c872a235713_1536688290002"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "checkTransactionErrorResponse": {
+      "$id": "#/properties/checkTransactionErrorResponse",
+      "type": "array",
+      "title": "The Checktransactionerrorresponse Schema",
+      "items": {
+        "$id": "#/properties/checkTransactionErrorResponse/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "errorMessage",
+          "errorCode"
+        ],
+        "properties": {
+          "errorMessage": {
+            "$id": "#/properties/checkTransactionErrorResponse/items/properties/errorMessage",
+            "type": "string",
+            "title": "The Errormessage Schema",
+            "default": "",
+            "examples": [
+              "Enrollment request in progress. The enrollment for Device Enrollment Program transaction ID is still in progress. Try checking again later."
+            ],
+            "pattern": "^(.*)$"
+          },
+          "errorCode": {
+            "$id": "#/properties/checkTransactionErrorResponse/items/properties/errorCode",
+            "type": "string",
+            "title": "The Errorcode Schema",
+            "default": "",
+            "examples": [
+              "DEP-ERR-4003"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

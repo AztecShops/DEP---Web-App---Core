@@ -1,0 +1,48 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "checkTransactionErrorResponse"
+  ],
+  "properties": {
+    "checkTransactionErrorResponse": {
+      "$id": "#/properties/checkTransactionErrorResponse",
+      "type": "array",
+      "title": "The Checktransactionerrorresponse Schema",
+      "items": {
+        "$id": "#/properties/checkTransactionErrorResponse/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "errorMessage",
+          "errorCode"
+        ],
+        "properties": {
+          "errorMessage": {
+            "$id": "#/properties/checkTransactionErrorResponse/items/properties/errorMessage",
+            "type": "string",
+            "title": "The Errormessage Schema",
+            "default": "",
+            "examples": [
+              "Access denied. You do not have permission to act on behalf of the Device Enrollment Program reseller ID."
+            ],
+            "pattern": "^(.*)$"
+          },
+          "errorCode": {
+            "$id": "#/properties/checkTransactionErrorResponse/items/properties/errorCode",
+            "type": "string",
+            "title": "The Errorcode Schema",
+            "default": "",
+            "examples": [
+              "GRX-90004"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

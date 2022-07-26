@@ -1,0 +1,92 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "deviceEnrollmentTransactionID",
+    "completedOn",
+    "orders",
+    "statusCode"
+  ],
+  "properties": {
+    "deviceEnrollmentTransactionID": {
+      "$id": "#/properties/deviceEnrollmentTransactionID",
+      "type": "string",
+      "title": "The Deviceenrollmenttransactionid Schema",
+      "default": "",
+      "examples": [
+        "9e51ea0f-aa59-4285-b95d-4234ca84a212_1536856209902"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completedOn": {
+      "$id": "#/properties/completedOn",
+      "type": "string",
+      "title": "The Completedon Schema",
+      "default": "",
+      "examples": [
+        "2018-09-13T16:30:44Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "orders": {
+      "$id": "#/properties/orders",
+      "type": "array",
+      "title": "The Orders Schema",
+      "items": {
+        "$id": "#/properties/orders/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "orderNumber",
+          "orderPostStatus",
+          "orderPostStatusMessage"
+        ],
+        "properties": {
+          "orderNumber": {
+            "$id": "#/properties/orders/items/properties/orderNumber",
+            "type": "string",
+            "title": "The Ordernumber Schema",
+            "default": "",
+            "examples": [
+              "558"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatus": {
+            "$id": "#/properties/orders/items/properties/orderPostStatus",
+            "type": "string",
+            "title": "The Orderpoststatus Schema",
+            "default": "",
+            "examples": [
+              "DEP-ERR-OR-4109"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatusMessage": {
+            "$id": "#/properties/orders/items/properties/orderPostStatusMessage",
+            "type": "string",
+            "title": "The Orderpoststatusmessage Schema",
+            "default": "",
+            "examples": [
+              "Order number not found. You cannot void or override an order if it has not been posted earlier. Enter a valid order number (for example, 1234567) and resubmit your request."
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "statusCode": {
+      "$id": "#/properties/statusCode",
+      "type": "string",
+      "title": "The Statuscode Schema",
+      "default": "",
+      "examples": [
+        "ERROR"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

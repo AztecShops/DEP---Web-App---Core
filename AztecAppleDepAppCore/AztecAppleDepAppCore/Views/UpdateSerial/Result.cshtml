@@ -1,0 +1,188 @@
+﻿@model AztecAppleDepApp.Models.TransactionLookupViewModel
+
+@{
+    ViewBag.Title = "Transaction Lookup Result";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Results</h2>
+</div>
+
+@if (ViewBag.Error == true)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                <strong>Error: Transaction is not enrolled.</strong>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <strong>Here's what we found:</strong>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Order Information</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.customerDepId)
+                </strong><br />
+                @Html.DisplayFor(model => model.customerDepId)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.transactionId)
+                </strong><br />
+                @Html.DisplayFor(model => model.transactionId)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.depResellerId)
+                </strong><br />
+                @Html.DisplayFor(model => model.depResellerId)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.shipTo)
+                </strong><br />
+                @Html.DisplayFor(model => model.shipTo)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.timeZone)
+                </strong><br />
+                @Html.DisplayFor(model => model.timeZone)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.langCode)
+                </strong><br />
+                @Html.DisplayFor(model => model.langCode)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.orderNumber)
+                </strong><br />
+                @Html.DisplayFor(model => model.orderNumber)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.orderDate)
+                </strong><br />
+                @Html.DisplayFor(model => model.orderDate)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.orderType)
+                </strong><br />
+                @Html.DisplayFor(model => model.orderType)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.customerId)
+                </strong><br />
+                @Html.DisplayFor(model => model.customerId)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.poNumber)
+                </strong><br />
+                @Html.DisplayFor(model => model.poNumber)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.deliveryNumber)
+                </strong><br />
+                @Html.DisplayFor(model => model.deliveryNumber)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.shipDate)
+                </strong><br />
+                @Html.DisplayFor(model => model.shipDate)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.AccountManager)
+                </strong><br />
+                @Html.DisplayFor(model => model.AccountManager)
+            </div>
+            <div class="form-group">
+                <strong>
+                    @Html.DisplayNameFor(model => model.ClientContact)
+                </strong><br />
+                @Html.DisplayFor(model => model.ClientContact)
+            </div>
+        </div>
+    </div>
+
+    using (Html.BeginForm("Process", "UpdateSerial", FormMethod.Post))
+    {
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.customerDepId)
+        @Html.HiddenFor(model => model.transactionId)
+        @Html.HiddenFor(model => model.depResellerId)
+        @Html.HiddenFor(model => model.timeZone)
+        @Html.HiddenFor(model => model.langCode)
+        @Html.HiddenFor(model => model.shipTo)
+        @Html.HiddenFor(model => model.orderNumber)
+        @Html.HiddenFor(model => model.orderDate)
+        @Html.HiddenFor(model => model.orderType)
+        @Html.HiddenFor(model => model.poNumber)
+        @Html.HiddenFor(model => model.customerId)
+        @Html.HiddenFor(model => model.shipDate)
+        @Html.HiddenFor(model => model.AccountManager)
+        @Html.HiddenFor(model => model.ClientContact)
+        @Html.HiddenFor(model => model.ClientEmail)
+        @Html.HiddenFor(model => model.deliveryNumber)
+        @Html.HiddenFor(Model => Model.TransactionNo)
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Device(s)</h2>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Current Serial Number(s)
+                    </th>
+                    <th>
+                        New Serial Number(s)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.SerialNos.Count(); i++)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(b => Model.SerialNos[i])</td>
+                        <td>@Html.TextBoxFor(b => Model.SerialNos[i], null, new { @class = "form-control", placeholder = "Serial Number" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group text-right">
+            <input type="submit" value="Update & Enroll" class="btn btn-aztecs" id="SubmitBtn" />
+        </div>
+
+    }
+}

@@ -1,0 +1,92 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "deviceEnrollmentTransactionID",
+    "completedOn",
+    "orders",
+    "statusCode"
+  ],
+  "properties": {
+    "deviceEnrollmentTransactionID": {
+      "$id": "#/properties/deviceEnrollmentTransactionID",
+      "type": "string",
+      "title": "The Deviceenrollmenttransactionid Schema",
+      "default": "",
+      "examples": [
+        "cf2a2f78-b87b-42b7-a12a-c62daa4a5d13_1536856558893"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completedOn": {
+      "$id": "#/properties/completedOn",
+      "type": "string",
+      "title": "The Completedon Schema",
+      "default": "",
+      "examples": [
+        "2018-09-13T16:36:30Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "orders": {
+      "$id": "#/properties/orders",
+      "type": "array",
+      "title": "The Orders Schema",
+      "items": {
+        "$id": "#/properties/orders/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "orderNumber",
+          "orderPostStatus",
+          "orderPostStatusMessage"
+        ],
+        "properties": {
+          "orderNumber": {
+            "$id": "#/properties/orders/items/properties/orderNumber",
+            "type": "string",
+            "title": "The Ordernumber Schema",
+            "default": "",
+            "examples": [
+              "559"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatus": {
+            "$id": "#/properties/orders/items/properties/orderPostStatus",
+            "type": "string",
+            "title": "The Orderpoststatus Schema",
+            "default": "",
+            "examples": [
+              "DEP-ERR-OR-4110"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatusMessage": {
+            "$id": "#/properties/orders/items/properties/orderPostStatusMessage",
+            "type": "string",
+            "title": "The Orderpoststatusmessage Schema",
+            "default": "",
+            "examples": [
+              "Order header mismatch. If you believe it is correct, resubmit the entire order as override (OV) or void (VD) the previously submitted order and resubmit your request."
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "statusCode": {
+      "$id": "#/properties/statusCode",
+      "type": "string",
+      "title": "The Statuscode Schema",
+      "default": "",
+      "examples": [
+        "ERROR"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

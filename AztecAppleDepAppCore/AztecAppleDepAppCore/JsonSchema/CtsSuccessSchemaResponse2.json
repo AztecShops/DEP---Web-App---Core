@@ -1,0 +1,81 @@
+﻿{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "deviceEnrollmentTransactionID",
+    "completedOn",
+    "orders",
+    "statusCode"
+  ],
+  "properties": {
+    "deviceEnrollmentTransactionID": {
+      "$id": "#/properties/deviceEnrollmentTransactionID",
+      "type": "string",
+      "title": "The Deviceenrollmenttransactionid Schema",
+      "default": "",
+      "examples": [
+        "0cdb88c8-bb21-4582-93c9-f5a247011edf_1536762182731"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completedOn": {
+      "$id": "#/properties/completedOn",
+      "type": "string",
+      "title": "The Completedon Schema",
+      "default": "",
+      "examples": [
+        "2018-09-12T14:23:27Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "orders": {
+      "$id": "#/properties/orders",
+      "type": "array",
+      "title": "The Orders Schema",
+      "items": {
+        "$id": "#/properties/orders/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "orderNumber",
+          "orderPostStatus"
+        ],
+        "properties": {
+          "orderNumber": {
+            "$id": "#/properties/orders/items/properties/orderNumber",
+            "type": "string",
+            "title": "The Ordernumber Schema",
+            "default": "",
+            "examples": [
+              "OR_900125"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "orderPostStatus": {
+            "$id": "#/properties/orders/items/properties/orderPostStatus",
+            "type": "string",
+            "title": "The Orderpoststatus Schema",
+            "default": "",
+            "examples": [
+              "COMPLETE"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    },
+    "statusCode": {
+      "$id": "#/properties/statusCode",
+      "type": "string",
+      "title": "The Statuscode Schema",
+      "default": "",
+      "examples": [
+        "COMPLETE"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

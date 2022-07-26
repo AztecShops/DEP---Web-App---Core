@@ -1,0 +1,243 @@
+﻿@model AztecAppleDepApp.Models.CTS.Response
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Results</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary" role="alert">
+            <strong>Here is the following information:</strong>
+        </div>
+    </div>
+</div>
+
+@if (Model.checkTransactionErrorResponse != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Error Code</th>
+                <th>Error Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.checkTransactionErrorResponse)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => item.errorCode)</td>
+                    <td>@Html.DisplayFor(x => item.errorMessage)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(x => x.statusCode)</th>
+                <th>@Html.DisplayNameFor(x => x.deviceEnrollmentTransactionID)</th>
+                <th>@Html.DisplayNameFor(x => x.transactionId)</th>
+                <th>@Html.DisplayNameFor(x => x.completedOn)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if (@Html.DisplayFor(x => x.statusCode).ToString() == "COMPLETE")
+                {
+                    <td><span class="badge badge-pill badge-success">@Html.DisplayFor(x => x.statusCode)</span></td>
+                }
+                else if (@Html.DisplayFor(x => x.statusCode).ToString() == "COMPLETE_WITH_ERRORS")
+                {
+                    <td><span class="badge badge-pill badge-warning">@Html.DisplayFor(x => x.statusCode)</span></td>
+                }
+                else
+                {
+                    <td><span class="badge badge-pill badge-danger">@Html.DisplayFor(x => x.statusCode)</span></td>
+                }
+                <td>@Html.DisplayFor(x => x.deviceEnrollmentTransactionID)</td>
+                <td>@Html.DisplayFor(x => x.transactionId)</td>
+                <td>@Html.DisplayFor(x => x.completedOn)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+            @foreach (var item in Model.orders)
+            {
+                <tr>
+                    <th>@Html.DisplayNameFor(x => item.orderPostStatus)</th>
+                    <th>@Html.DisplayNameFor(x => item.orderNumber)</th>
+                </tr>
+            }
+        </thead>
+        <tbody>
+            @foreach (var item in Model.orders)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => item.orderPostStatus)</td>
+                    <td>@Html.DisplayFor(x => item.orderNumber)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+            @foreach (var orders in Model.orders)
+            {
+                if (orders.deliveries != null)
+                {
+                    foreach (var deliveries in orders.deliveries)
+                    {
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => deliveries.deliveryNumber)</th>
+                            <th>@Html.DisplayNameFor(x => deliveries.deliveryPostStatus)</th>
+                            <th>@Html.DisplayNameFor(x => deliveries.deliveryPostStatusMessage)</th>
+                        </tr>
+                    }
+                }
+            }
+        </thead>
+        <tbody>
+            @foreach (var orders in Model.orders)
+            {
+                if (orders.deliveries != null)
+                {
+                    foreach (var deliveries in orders.deliveries)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => deliveries.deliveryNumber)</td>
+                            <td>@Html.DisplayFor(x => deliveries.deliveryPostStatus)</td>
+                            <td>@Html.DisplayFor(x => deliveries.deliveryPostStatusMessage)</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+    var DeliveriesCount = Model.orders.Where(x => x.deliveries == null).Count();
+    if (DeliveriesCount == 1 && @Html.DisplayFor(x => x.statusCode).ToString() == "ERROR")
+    {
+        foreach (var orders in Model.orders)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order Post Status Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => orders.orderPostStatusMessage)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    }
+    else if (DeliveriesCount == 1 && @Html.DisplayFor(x => x.statusCode).ToString() == "COMPLETE")
+    {
+    }
+    else if (@Html.DisplayFor(x => x.statusCode).ToString() == "COMPLETE")
+    {
+        <h2>Device Information</h2>
+        <div class="alert alert-success" role="alert">
+            <strong>Your transaction was completed.</strong>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Device ID</th>
+                    <th>Device Post Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orders in Model.orders)
+                {
+                    foreach (var deliveries in orders.deliveries)
+                    {
+                        foreach (var devices in deliveries.devices)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => devices.deviceId)</td>
+                                <td>@Html.DisplayFor(x => devices.devicePostStatus)</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else if (@Html.DisplayFor(x => x.statusCode).ToString() == "COMPLETE_WITH_ERRORS")
+    {
+        <h2>Device Information</h2>
+        <div class="alert alert-warning" role="alert">
+            <strong>Your transaction was completed, but some of your device(s) came back with an error.</strong>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Device ID</th>
+                    <th>Device Post Status</th>
+                    <th>Device Post Status Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orders in Model.orders)
+                {
+                    foreach (var deliveries in orders.deliveries)
+                    {
+                        foreach (var devices in deliveries.devices)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => devices.deviceId)</td>
+                                <td>@Html.DisplayFor(x => devices.devicePostStatus)</td>
+                                <td>@Html.DisplayFor(x => devices.devicePostStatusMessage)</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>Device Information</h2>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Device ID</th>
+                    <th>Device Post Status</th>
+                    <th>Device Post Status Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orders in Model.orders)
+                {
+                    foreach (var deliveries in orders.deliveries)
+                    {
+                        if (deliveries.devices != null)
+                        {
+                            foreach (var devices in deliveries.devices)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => devices.deviceId)</td>
+                                    <td>@Html.DisplayFor(x => devices.devicePostStatus)</td>
+                                    <td>@Html.DisplayFor(x => devices.devicePostStatusMessage)</td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}
