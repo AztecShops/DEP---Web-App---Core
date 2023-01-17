@@ -1,5 +1,0 @@
----------------------------------------------------
-New file created: 10/7/2019 10:48:10 AM
-The following error(s):
----------------------------------------------------
-{"deviceEnrollmentTransactionID":"9ba6b62b-c633-46c2-9080-8a8b4bbd299e_1569881340200","transactionId":"TX3041889825689930-OR","completedOn":"2019-09-30T22:09:11Z","orders":[{"orderNumber":"OR3041889825689930","orderPostStatus":"COMPLETE","deliveries":[{"deliveryNumber":"DL3041889825689930","deliveryPostStatus":"COMPLETE","devices":[{"deviceId":"FVFZD2S0L414","devicePostStatus":"COMPLETE"},{"deviceId":"FVFZF13WL414","devicePostStatus":"COMPLETE"}]}]}],"statusCode":"COMPLETE"}
